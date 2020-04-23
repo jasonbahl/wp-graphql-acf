@@ -51,7 +51,7 @@ function init() {
 	return ACF::instance();
 }
 
-add_action( 'init', '\WPGraphQL\ACF\init' );
+add_action( 'plugins_loaded', '\WPGraphQL\ACF\init' );
 
 /**
  * Show admin notice to admins if this plugin is active but either ACF and/or WPGraphQL

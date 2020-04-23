@@ -23,7 +23,13 @@ class ComposerStaticInit0d1c0770bd52413713b6ce542771fda1
     public static $classMap = array (
         'WPGraphQL\\ACF\\ACF' => __DIR__ . '/../..' . '/src/class-acf.php',
         'WPGraphQL\\ACF\\ACF_Settings' => __DIR__ . '/../..' . '/src/class-acfsettings.php',
+        'WPGraphQL\\ACF\\ACF_Type_Registry' => __DIR__ . '/../..' . '/src/class-acf-type-registry.php',
         'WPGraphQL\\ACF\\Config' => __DIR__ . '/../..' . '/src/class-config.php',
+        'WPGraphQL\\ACF\\Registry\\FieldRegistry\\ACF_Field_Registry' => __DIR__ . '/../..' . '/src/Registry/class-acf-field-registry.php',
+        'WPGraphQL\\ACF\\Settings' => __DIR__ . '/../..' . '/src/class-settings.php',
+        'WPGraphQL\\ACF\\Type\\Object\\ACF_Field_Group_Config' => __DIR__ . '/../..' . '/src/Type/Object/class-acf-field-group-config.php',
+        'WPGraphQL\\ACF\\Type\\Object\\ACF_Field_Groups' => __DIR__ . '/../..' . '/src/Type/Object/class-acf-field-groups.php',
+        'WPGraphQL\\ACF\\Type\\Object\\ACF_Location_Rule' => __DIR__ . '/../..' . '/src/Type/Object/class-acf-location-rule.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

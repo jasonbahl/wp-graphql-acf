@@ -143,9 +143,9 @@ class PostObjectFieldsTest extends \Codeception\TestCase\WPTestCase {
 			'name' => 'text_area_field'
 		]);
 
-		$expexted = 'expected test value';
+		$expected = 'expected test value';
 
-		update_field( 'text_area_field', $expexted, $this->post_id );
+		update_field( 'text_area_field', $expected, $this->post_id );
 
 		$query = '
 		query getPostById( $postId: Int ) {
@@ -169,7 +169,7 @@ class PostObjectFieldsTest extends \Codeception\TestCase\WPTestCase {
 		codecept_debug( $actual );
 
 		$this->assertArrayNotHasKey( 'errors', $actual );
-		$this->assertSame( $expexted, $actual['data']['postBy']['postFields']['textAreaField'] );
+		$this->assertSame( $expected, $actual['data']['postBy']['postFields']['textAreaField'] );
 
 	}
 

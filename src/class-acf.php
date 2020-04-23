@@ -139,12 +139,45 @@ final class ACF {
 	 */
 	private function init() {
 
-		$config = new Config();
-		add_action( 'graphql_register_types', [ $config, 'init' ], 10, 1 );
+		//$config = new Config();
+		//add_action( 'graphql_register_types', [ $config, 'init' ], 10, 1 );
+		$register_types = new ACF_Type_Registry();
+		add_action( 'init_graphql_request', [ $register_types, 'init' ], 10, 1 );
 
-		$acf_settings = new ACF_Settings();
-		$acf_settings->init();
+//		$acf_settings = new ACF_Settings();
+//		$acf_settings->init();
 
+		$settings = new Settings();
+		$settings->init();
+
+	}
+
+	public static function get_graphql_options_pages() {
+		global $acf_options_page;
+		$pages = [];
+		if ( ! isset( $acf_options_page ) ) {
+			return $pages;
+		}
+
+		/**
+		 * Get a list of post types that have been registered to show in graphql
+		 */
+		$graphql_options_pages = acf_get_options_pages();
+
+
+		if ( ! empty( $graphql_options_pages ) && is_array( $graphql_options_pages ) ) {
+			foreach ( $graphql_options_pages as $options_page ) {
+				if (
+					isset( $options_page['show_in_graphql'] ) &&
+					true === $options_page['show_in_graphql'] &&
+					isset( $options_page['graphql_name'] )
+				) {
+					$pages[ $options_page['graphql_name'] ] = $options_page;
+				}
+			}
+		}
+
+		return $pages;
 	}
 
 }

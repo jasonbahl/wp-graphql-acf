@@ -116,7 +116,7 @@ class Config {
 		$str = ucwords( $str );
 		// Replace spaces
 		$str = str_replace( ' ', '', $str );
-		// Lowecase first letter
+		// Lowercase first letter
 		$str = lcfirst( $str );
 
 		return $str;

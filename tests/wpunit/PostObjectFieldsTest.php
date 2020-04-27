@@ -49,6 +49,9 @@ class PostObjectFieldsTest extends \Codeception\TestCase\WPTestCase {
 			'description'           => '',
 			'show_in_graphql'       => 1,
 			'graphql_field_name'    => 'postFields',
+			'graphql_types'         => [
+				'Post',
+			]
 		];
 
 		acf_add_local_field_group( array_merge( $defaults, $config ));
@@ -1163,8 +1166,6 @@ class PostObjectFieldsTest extends \Codeception\TestCase\WPTestCase {
 
 		delete_post_meta( $this->post_id, 'select_field_multiple' );
 
-		codecept_debug( 'goo' );
-
 		$query = '
 		query GET_POST_WITH_ACF_FIELD( $postId: Int! ) {
 		  postBy( postId: $postId ) {
@@ -1206,13 +1207,9 @@ class PostObjectFieldsTest extends \Codeception\TestCase\WPTestCase {
 		$this->register_acf_field_group([
 			'key' =>  $this->group_key . 'acf_test_group',
 			'location'              => [
-				[
-					[
-						'param'    => 'post_type',
-						'operator' => '==',
-						'value'    => 'acf_test',
-					],
-				],
+				'graphql_types' => [
+					'AcfTest'
+				]
 			],
 		]);
 

@@ -139,16 +139,11 @@ final class ACF {
 	 */
 	private function init() {
 
-		//$config = new Config();
-		//add_action( 'graphql_register_types', [ $config, 'init' ], 10, 1 );
 		$register_types = new ACF_Type_Registry();
-		add_action( 'init_graphql_request', [ $register_types, 'init' ], 10, 1 );
+		add_action( 'graphql_register_types', [ $register_types, 'init' ], 10, 1 );
 
-//		$acf_settings = new ACF_Settings();
-//		$acf_settings->init();
-
-		$settings = new Settings();
-		$settings->init();
+		// Initialize the WPGraphQL for ACF settings
+		( new Settings() )->init();
 
 	}
 

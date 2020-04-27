@@ -10,9 +10,9 @@ return array(
     'WPGraphQL\\ACF\\ACF_Settings' => $baseDir . '/src/class-acfsettings.php',
     'WPGraphQL\\ACF\\ACF_Type_Registry' => $baseDir . '/src/class-acf-type-registry.php',
     'WPGraphQL\\ACF\\Config' => $baseDir . '/src/class-config.php',
-    'WPGraphQL\\ACF\\Registry\\FieldRegistry\\ACF_Field_Registry' => $baseDir . '/src/Registry/class-acf-field-registry.php',
     'WPGraphQL\\ACF\\Settings' => $baseDir . '/src/class-settings.php',
     'WPGraphQL\\ACF\\Type\\Object\\ACF_Field_Group_Config' => $baseDir . '/src/Type/Object/class-acf-field-group-config.php',
-    'WPGraphQL\\ACF\\Type\\Object\\ACF_Field_Groups' => $baseDir . '/src/Type/Object/class-acf-field-groups.php',
+    'WPGraphQL\\ACF\\Type\\Object\\ACF_Link' => $baseDir . '/src/Type/Object/class-acf-link.php',
     'WPGraphQL\\ACF\\Type\\Object\\ACF_Location_Rule' => $baseDir . '/src/Type/Object/class-acf-location-rule.php',
+    'WPGraphQL\\Type\\Object\\Relationship_Field_Union' => $baseDir . '/src/Type/Object/class-relationship-field-union.php',
 );

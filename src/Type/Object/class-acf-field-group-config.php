@@ -3,12 +3,21 @@ namespace WPGraphQL\ACF\Type\Object;
 
 use GraphQLRelay\Relay;
 
+/**
+ * Class ACF_Field_Group_Config
+ *
+ * @package WPGraphQL\ACF\Type\Object
+ */
 class ACF_Field_Group_Config {
 
+	/**
+	 * Register the AcfFieldGroupConfig Type
+	 */
 	public static function register_type() {
 
-		register_graphql_object_type( 'ACF_Field_Group_Config', [
+		register_graphql_object_type( 'AcfFieldGroupConfig', [
 			'description' => __( 'Configuration fields for ACF Field Groups', 'wp-graphql-acf' ),
+			'interfaces' => [ 'Node' ],
 			'fields' => [
 				'id' => [
 					'type' => 'ID',
@@ -31,13 +40,16 @@ class ACF_Field_Group_Config {
 				'title' => [
 					'type' => 'String',
 					'description' => __( 'The title of the ACF Field Group', 'wp-graphql-acf' ),
+					'resolve' => function( $root ) {
+						return $root['title'];
+					}
 				],
 				'fields' => [
 					'type' => [ 'list_of' => 'String' ],
 					'description' => __( 'The fields configured within the ACF Field Group', 'wp-graphql-acf' ),
 				],
 				'locationRules' => [
-					'type' => [ 'list_of' => 'ACF_Location_Rule' ],
+					'type' => [ 'list_of' => 'AcfLocationRule' ],
 					'description' => __( 'The location rules configured for the ACF Field Group', 'wp-graphql-acf' ),
 					'resolve' => function( $config ) {
 						return ! empty( $config['location'][0] ) ? $config['location'][0] : null;

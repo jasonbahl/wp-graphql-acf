@@ -20,7 +20,7 @@ class PostFieldsTest extends \Codeception\TestCase\WPTestCase {
 	}
 
 	public function tearDown() {
-
+		parent::tearDown();
 	}
 
 	public function register_field_group( $config = [] ) {
@@ -48,6 +48,9 @@ class PostFieldsTest extends \Codeception\TestCase\WPTestCase {
 			'description'           => '',
 			'show_in_graphql'       => 1,
 			'graphql_field_name'    => 'postFields',
+			'graphql_types' => [
+				'Post',
+			]
 		];
 
 		acf_add_local_field_group( array_merge( $defaults, $config ));
@@ -109,7 +112,6 @@ class PostFieldsTest extends \Codeception\TestCase\WPTestCase {
 			postBy( postId: $postId ) {
 				id
 				postFields {
-					fieldGroupName
 					textField
 				}
 			}
